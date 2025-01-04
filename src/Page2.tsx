@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Markdown from "react-markdown";
-import video1 from "./assets/1.mp4";
-import video2 from "./assets/2.mp4";
+// import video1 from "./assets/1.mp4";
+// import video2 from "./assets/2.mp4";
 import cam1 from "./assets/cam1.png";
 import cam2 from "./assets/cam2.png";
 import cam3 from "./assets/cam3.png";
@@ -53,8 +53,8 @@ const Page2: React.FC<PageProps> = ({ onClick }) => {
       <img
         className="w-full h-1/3 my-5 object-contain object-center rounded"
         src={focusedVideoSrc}
-        autoPlay
-        playsInline
+        // autoPlay
+        // playsInline
       />
       <div className="flex flex-wrap w-full justify-center items-end">
         {videos.map((video, index) => (
@@ -62,9 +62,9 @@ const Page2: React.FC<PageProps> = ({ onClick }) => {
             key={video.id}
             className="w-1/2 mb-1 object-contain object-center rounded"
             src={video.src}
-            autoPlay
-            muted
-            playsInline
+            // autoPlay
+            // muted
+            // playsInline
             onClick={() => handleVideoClick(index)}
           />
         ))}
