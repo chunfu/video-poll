@@ -54,7 +54,7 @@ const Page1: React.FC<PageProps> = ({ onClick }) => {
 
   return (
     <div className="container mx-auto flex flex-col px-5 py-5 justify-center items-stretch">
-      <div className="prose">
+      <div className="prose max-w-full">
         <Markdown
           components={{
             h1: ({ children }) => (
