@@ -37,12 +37,15 @@ const content = `
 
 E-mail: chenchenyueh@ntsu.edu.tw
 
----
+&nbsp;
+
 國立臺灣大學運動設施與健康管理碩士學位學程
 
 計畫研究人員：張湘苡 同學
 
 聯絡信箱：hsiangyi829@gmail.com
+
+---
 `;
 
 const Page1: React.FC<PageProps> = ({ onClick }) => {
@@ -97,7 +100,7 @@ const Page1: React.FC<PageProps> = ({ onClick }) => {
             className="cursor-pointer ml-2 text-slate-600 text-sm"
             htmlFor="check-2"
           >
-            我已充分了解上述研究目的與相關資訊。（參與者需勾選後才能按下一頁）
+            我已充分了解上述內容，並同意參與此研究。
           </label>
         </div>
         <p>請點選下方「開始」以繼續填答，謝謝您的配合。</p>
