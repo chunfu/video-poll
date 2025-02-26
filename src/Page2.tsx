@@ -33,7 +33,8 @@ const Page2: React.FC<PageProps> = ({ onClick }) => {
     const clickedVideo = document.getElementById(
       `video-${index}`
     ) as HTMLVideoElement;
-    setFocusedVideoSrc(`${videos[index].src}#t=${clickedVideo.currentTime}`);
+    // setFocusedVideoSrc(`${videos[index].src}#t=${clickedVideo.currentTime}`);
+    setFocusedVideoSrc(videos[index].src);
   };
 
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
@@ -51,13 +52,27 @@ const Page2: React.FC<PageProps> = ({ onClick }) => {
       <div className="prose">
         <Markdown>{content}</Markdown>
       </div>
-      <video
+      <div className="w-full h-1/3 my-5 object-contain object-center rounded flex flex-col">
+        {videos.map((video, index) => (
+          <video
+            key={video.id}
+            id={`video-${index}`}
+            className={`${focusedVideoSrc !== video.src ? 'hidden' : ''}`}
+            src={video.src}
+            autoPlay
+            muted
+            playsInline
+            onClick={() => handleVideoClick(index)}
+          />
+        ))}
+      </div>
+      {/* <video
         ref={focusedVideoRef}
         className="w-full h-1/3 my-5 object-contain object-center rounded"
         src={focusedVideoSrc}
         autoPlay
         playsInline
-      />
+      /> */}
       <div className="flex flex-wrap w-full justify-center items-end">
         {videos.map((video, index) => (
           <video
