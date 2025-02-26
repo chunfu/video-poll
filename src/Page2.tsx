@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import video1 from "./assets/cam1+.mov";
 import video2 from "./assets/cam2+.mov";
@@ -27,12 +27,12 @@ interface PageProps {
 
 const Page2: React.FC<PageProps> = ({ onClick }) => {
   const [focusedVideoSrc, setFocusedVideoSrc] = useState<string>("");
-  const focusedVideoRef = useRef<HTMLVideoElement>(null);
+  // const focusedVideoRef = useRef<HTMLVideoElement>(null);
 
   const handleVideoClick = (index: number) => {
-    const clickedVideo = document.getElementById(
-      `video-${index}`
-    ) as HTMLVideoElement;
+    // const clickedVideo = document.getElementById(
+    //   `video-${index}`
+    // ) as HTMLVideoElement;
     // setFocusedVideoSrc(`${videos[index].src}#t=${clickedVideo.currentTime}`);
     setFocusedVideoSrc(videos[index].src);
   };
