@@ -26,15 +26,27 @@ interface PageProps {
 }
 
 const Page2: React.FC<PageProps> = ({ onClick }) => {
-  const [focusedVideoSrc, setFocusedVideoSrc] = useState<string>("");
-  // const focusedVideoRef = useRef<HTMLVideoElement>(null);
+  const [focusedVideoIndex, setFocusedVideoIndex] = useState<number>(-1);
 
   const handleVideoClick = (index: number) => {
-    // const clickedVideo = document.getElementById(
-    //   `video-${index}`
-    // ) as HTMLVideoElement;
+    if (focusedVideoIndex > -1) {
+      const previousVideo = document.getElementById(
+        `${focusedVideoIndex}-large`
+      ) as HTMLVideoElement;
+      previousVideo.pause();
+    }
+
+    const clickedVideo = document.getElementById(
+      `${index}-small`
+    ) as HTMLVideoElement;
+    const targetVideo = document.getElementById(
+      `${index}-large`
+    ) as HTMLVideoElement;
+    targetVideo.currentTime = clickedVideo.currentTime;
+    targetVideo.play();
+
     // setFocusedVideoSrc(`${videos[index].src}#t=${clickedVideo.currentTime}`);
-    setFocusedVideoSrc(videos[index].src);
+    setFocusedVideoIndex(index);
   };
 
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
@@ -55,14 +67,11 @@ const Page2: React.FC<PageProps> = ({ onClick }) => {
       <div className="w-full h-1/3 my-5 object-contain object-center rounded flex flex-col">
         {videos.map((video, index) => (
           <video
-            key={video.id}
-            id={`video-${index}`}
-            className={`${focusedVideoSrc !== video.src ? 'hidden' : ''}`}
+            key={`${video.id}${index}`}
+            id={`${index}-large`}
+            className={`${focusedVideoIndex !== index ? "hidden" : ""}`}
             src={video.src}
-            autoPlay
-            muted
             playsInline
-            onClick={() => handleVideoClick(index)}
           />
         ))}
       </div>
@@ -77,7 +86,7 @@ const Page2: React.FC<PageProps> = ({ onClick }) => {
         {videos.map((video, index) => (
           <video
             key={video.id}
-            id={`video-${index}`}
+            id={`${index}-small`}
             className="w-1/2 mb-1 object-contain object-center rounded"
             src={video.src}
             autoPlay
